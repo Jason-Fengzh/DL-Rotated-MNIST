@@ -1,1 +1,1 @@
-# DL-Rotated-MNIST
+# Dictionary Learning with Symmetries via Group Representations
