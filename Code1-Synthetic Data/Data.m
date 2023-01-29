@@ -1,3 +1,4 @@
+%% Generate synthetic data according to j and K
 function [phi,y,angle]= Data(j,K)
 n=2*j+1;
 X=randn(n);

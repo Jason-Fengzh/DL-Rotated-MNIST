@@ -1,3 +1,4 @@
+%% We expand d_(m,m1)^j(beta) over exp(ik\beta) k=0,+-1,... and get the coefficients
 function [Coeffi] = ComputeCo(j,m,m1)
 coeffi=zeros(4*j+1,1);
 M2=min([j-m1,j+m]);
@@ -17,11 +18,10 @@ for k=M1:1:M2
     an=(0.5)^(2*j)*(1i)^n;    
     coeffi=coeffi+A*an*ck;
 end
+% We obtain a (4j+1)*1 "coeffi" vector, and the coefficient of exp(ik\beta) equals to coeffi(2j+1+k)
 Coeffi=zeros(2*j+1,1);
 for s=1:1:2*j+1
     Coeffi(s)=coeffi(2*s-1);
 end
-    
-% We obtain a (4j+1)*1 "coeffi" vector, and the coefficient of exp(ik\beta) equals to coeffi(2j+1+k)
 
-% [Coeffi(4,3,2),ComputeCo(4,3,2)] The results by this method are same as the integral expression
+% The results by this method are same as the integral expression [Pass verification]

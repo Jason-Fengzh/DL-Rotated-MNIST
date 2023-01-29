@@ -1,7 +1,8 @@
+%% Fix z, update phi
 function [phi] = argminPhi(y,z)
 % the input y and z should be 3-dim array
 % y(:,:,i) is a nxn matrix, 1<=i<=K
-% z(:,:,i,j) is a nxn matrix, 1<=j<=q
+% z(:,:,i,j) is a nxn matrix, 1<=j<=q. To be simple, let q=1 in our code.
 N1=size(y);
 N2=size(z);
 n=N1(1);
@@ -12,7 +13,7 @@ end
 if (length(N2)==3)
     q=1;
 end
-% cell structure can store matrix in each cell element, we can also use a 4-dim array
+% Cell structure can store matrix in each cell element, we can also use a 4-dim array
 Z1=cell(q,q);
 Z2=cell(q,1);
 % Z1 and Z2 contain the "matrix element"
@@ -28,7 +29,7 @@ for j1=1:1:q
         Z2{j1}=Z2{j1}+z(:,:,i,j1)'*y(:,:,i);
     end
 end
-% first form the column
+% First form the column
 A1=cell(1,q);
 for i2=1:1:q
     A1{i2}=[];
@@ -36,7 +37,7 @@ for i2=1:1:q
         A1{i2}=[A1{i2};Z1{i1,i2}];
     end
 end
-% then form the two matrice we want
+% Then form the two matrice we want
 A=[];
 B=[];
 for i=1:1:q
@@ -44,7 +45,7 @@ for i=1:1:q
     B=[B;Z2{i}];
 end 
 C=A\B;
-% finally divide the long matrix into phi_1,...,phi_q
+% Finally divide the long matrix into phi_1,...,phi_q
 phi=zeros(n,n,q);
 for j=1:1:q
     phi(:,:,j)=C(1+(j-1)*n:j*n,:);

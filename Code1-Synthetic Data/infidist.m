@@ -1,3 +1,4 @@
+%% Use binary search to get the distance(difference) of phi1, phi2
 function [distance,angle] = infidist(phi1,phi2,N,interval,times)
 % input 'times' is how many times we repeat the binary search type of procedure
 % 'distance' is the inf distance and 'angle' is the value of [alpha,beta,gamma]

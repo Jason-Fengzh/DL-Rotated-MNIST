@@ -1,3 +1,4 @@
+%% Divide the interval to N step, and find the minimum value
 function [d,index] = idist(phi1,phi2,N,interval)
 % input 'interval' should be a 3x2 matrix where the rows describe the range of alpha/ beta/ gamma
 % output 'd' is the smallest distance up to some D, 'index' is a 1x3 matrix showing the value of alpha/ beta/ gamma

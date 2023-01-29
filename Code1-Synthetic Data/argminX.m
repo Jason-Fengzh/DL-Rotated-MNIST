@@ -1,3 +1,4 @@
+%% Optimizition over the coefficients x
 function [x] = argminX(y,Phi,c,lmd)
 % y should be (2j+1)^2 x 1 vector, Phi is (2j+1)^2 x c matrix
 n=sqrt(length(y)); % n=2j+1
@@ -15,7 +16,6 @@ end
 minimize((y-Phi*x)'*(y-Phi*x)/2+lmd*norm(x,1))
 
     subject to
-    
+    % No constraints
    
-
 cvx_end

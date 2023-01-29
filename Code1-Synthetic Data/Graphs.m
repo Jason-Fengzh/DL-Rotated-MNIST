@@ -1,28 +1,31 @@
-clear;clc;
-rng(3)
+%% Two methods together with comparision
+clear;clc;  % Reset
+rng(3)  % Seed
 j=1;
 n=2*j+1;
-c1=1;
+c1=1;  % c1,c2 is the number of dictionary elements (atoms)
 c2=5;
-K=50; % number of data
-N=10;
-times=3; % for calculating the distance
-lmd=0.1;
-iteration=20;
-interval=[0,2*pi;0,2*pi;0,2*pi];
+K=50;  % Number of data
+N=10;  % Divide the interval to N1/N2 step to search the minimum
+times=3;  % Times we repeat the binary search type of procedure in function 'infidist'
+lmd=0.1;  % Penalty factor
+iteration=20;  % Number of iteration
+interval=[0,2*pi;0,2*pi;0,2*pi];  % Interval for alpha,beta,gamma
 
-[Phi_true,ymatrix,angle]= Data(j,K);
-% y is nxnxK array, angle is 3xK matrix
-%%
+[Phi_true,ymatrix,angle] = Data(j,K);
+% y is a nxnxK array, angle is a 3xK matrix
+
+%% Vanilla DL with c1=1 atoms
 y=zeros(n^2,K);
 for i=1:1:K
-    y(:,i)=reshape(ymatrix(:,:,i),n^2,1);
+    y(:,i) = reshape(ymatrix(:,:,i),n^2,1);
 end
 
-% generate Phi
+% Generate Phi randomly for initialization
 Phi=rand(n^2,c1)+1j*rand(n^2,c1);
 Phi=normalize(Phi);
 
+% Record the distance in every iteration
 d0=zeros(1,c1);
 matrixPhi0=zeros(n,n,c1);
 for k=1:1:c1
@@ -60,13 +63,13 @@ dmean1=[dmean0,dmean1];
 dmin1=[dmin0,dmin1];
 dmax1=[dmax0,dmax1];
 
-%%
+%% Vanilla DL with c2=5 atoms
 y=zeros(n^2,K);
 for i=1:1:K
     y(:,i)=reshape(ymatrix(:,:,i),n^2,1);
 end
 
-% generate Phi
+% generate Phi randomly for initialization
 Phi=rand(n^2,c2)+1j*rand(n^2,c2);
 Phi=normalize(Phi);
 
@@ -107,7 +110,7 @@ dmean2=[dmean0,dmean2];
 dmin2=[dmin0,dmin2];
 dmax2=[dmax0,dmax2];
 
-%%
+%% Dictionary learning with symmetries
 X=randn(n);
 Y=randn(n);
 Z=X+1i*Y;
@@ -129,8 +132,9 @@ for m=1:1:iteration
     d(m)=min(d1(m),d2(m));
 end
 d=[d0,d];
-%%
-x= 0:1:20;
+
+%% draw the curves
+x= 0:1:iteration;
 errorbar(x,dmean1,dmean1-dmin1,dmax1-dmean1);
 hold on
 errorbar(x,dmean2,dmean2-dmin2,dmax2-dmean2,'--');

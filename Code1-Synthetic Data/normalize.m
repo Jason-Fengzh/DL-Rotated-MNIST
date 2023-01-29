@@ -1,3 +1,4 @@
+%% Do normalization to each column
 function [unitphi] = normalize(phi)
 % phi is a nxm matrix. we want each column of phi to be unit vector
 s=size(phi);

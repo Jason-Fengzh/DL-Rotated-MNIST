@@ -1,9 +1,11 @@
+%% Fix phi, update z
 function [z] = argminiZ(y,phi,lmd)
 % y and phi are 2j+1 x 2j+1 complex matrice
 N=size(y);
 n=N(1);    % n=2j+1
 j=(n-1)/2;
 
+% Use the cvx toolbox
 cvx_begin quiet
 
 % let q=1
@@ -20,10 +22,11 @@ B1=reshape(B,1,n*n);
 J=sub2ind([n,n,n,n,n,n],j+1,j+1,j+1,j+1,j+1,j+1);
 [j1,j2]=ind2sub([n^3,n^3],J);
 
+% Object function
 minimize((M(n^3+1,n^3+1)/2+M(j1,j2)/2)*lmd+B1*B1'/2)
 
     subject to
-    
+    % The block toeplitz constraint
     reshape(z,n^2,1)==LinearL(j)*reshape(x,n^3,1);
     count=0;
     for i2=1:1:n
@@ -94,5 +97,3 @@ minimize((M(n^3+1,n^3+1)/2+M(j1,j2)/2)*lmd+B1*B1'/2)
     A*Z_dim1 == Z0;
 
 cvx_end
-% z
-% normz=norm(z,'fro')

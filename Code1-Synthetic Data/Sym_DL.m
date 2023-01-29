@@ -1,22 +1,27 @@
-clear;clc;
-rng(3)
-j=1;
+%% Script for Dictionary Learning with symmetries (our method)
+clear;clc;  % Reset
+% Initializtion
+rng(3)  % Seed
+j=2;
 n=2*j+1;
-K=50; % number of data
-N1=10;
+K=50; % Number of data
+N1=10;  % Divide the interval to N1/N2 step to search the minimum
 N2=15; 
-times=3; % for calculating the distance
-lmd=0.1;
-iteration=20;
+times=3; % For calculating the distance, times we repeat the binary search
+lmd=0.1;  % Penalty factor
+iteration=20;  % Number of iteration
 
+%% Generate data
 [phi_true,y,angle]= Data(j,K);
 % y is nxnxK array, angle is 3xK matrix
 
+% initialize a random normalized phi
 X=randn(n);
 Y=randn(n);
 Z=X+1i*Y;
 phi=Z/(norm(Z,'fro'));
-% initialize a random normalized phi
+
+%% Compute the distance betweem true value and experiment result
 z=zeros(n,n,K);
 d1=zeros(1,iteration);
 d2=ones(1,iteration);
@@ -37,9 +42,11 @@ for m=1:1:iteration
     d(m)=min(d1(m),d2(m));
 end
 d=[d0,d];
-% x= 0:1:iteration;
-% plot(x,d,'-o');
-% xlabel('Iterate','FontSize',20);
-% ylabel('Distance','FontSize',20);
 
-save('d_phi_y_z.mat','d','phi','phi_true','y','z');
+%% draw the curve and save the data
+x= 0:1:iteration;
+plot(x,d,'-o');
+xlabel('Iterate','FontSize',20);
+ylabel('Distance','FontSize',20);
+
+% save('d_phi_y_z.mat','d','phi','phi_true','y','z');
