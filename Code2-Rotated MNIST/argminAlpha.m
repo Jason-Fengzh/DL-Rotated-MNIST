@@ -1,8 +1,6 @@
 function [optimalvalue] = argminAlpha(Y,A,c,beta,gamma,j)
-% This function performs a grid search over [0,2pi) to obtain the optimal
-% alpha
+% This function performs a grid search over [0,2pi) to obtain the optimal alpha
 % Method is a binary search with two tiers
-
 % Set the number of grid points
 n_gridpts = 10;
 

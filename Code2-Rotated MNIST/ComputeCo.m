@@ -19,12 +19,12 @@ for k=M1:1:M2
     an=(0.5)^(2*j)*(1i)^n;    
     coeffi=coeffi+A*an*ck;
 end
+
+% We obtain a (4j+1)*1 "coeffi" vector, and the coefficient of exp(ik\beta) equals to coeffi(2j+1+k)
+% Actually a (2j+1)*1 vector is enough
 Coeffi=zeros(2*j+1,1);
 for s=1:1:2*j+1
     Coeffi(s)=coeffi(2*s-1);
 end
     
-% We obtain a (4j+1)*1 "coeffi" vector, and the coefficient of exp(ik\beta) equals to coeffi(2j+1+k)
-% Actually a (2j+1)*1 vector is enough
-
 end

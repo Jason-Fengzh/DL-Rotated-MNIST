@@ -1,6 +1,8 @@
+% Plot the curve of the error
 clear;clc;
 n_Iterates = 10;
 Sq_Err = zeros(10, n_Iterates);  % from dig0 to dig9
+% Forgot to save automatically, type according to the screenshot (real experiment results)
 Sq_Err(1,:) = [0.9971,0.1949,0.15966,0.1601,0.16088,0.16088,0.16088,0.16088,0.16088,0.16088];
 Sq_Err(2,:) = [0.99733,0.43323,0.27843,0.29498,0.29259,0.29415,0.29209,0.29278,0.29274,0.29274];
 Sq_Err(3,:) = [0.99882,0.32814,0.16018,0.16051,0.16051,0.16051,0.16051,0.16051,0.16051,0.16051];

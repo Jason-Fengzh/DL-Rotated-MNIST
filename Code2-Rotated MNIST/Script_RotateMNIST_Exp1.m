@@ -7,6 +7,7 @@
 clear all; close all; clc;
 
 % Change the data_name, 'digi' for i=0,1,...,9
+% To use the dataset 'fourier_coefficients_16.mat', please download first
 load('fourier_coefficients_16.mat','dig9')
 
 % This is the bandwidth
@@ -103,9 +104,3 @@ for ii = 1 : n_Iterates
 %     err_ii = err1;
     
 end
-
-% % Save the data of the last Iteration
-% fname = strcat("SO3-Dict_Ambient_it",int2str(ii),".mat");
-% save(fname,'A_FD')
-% fname = strcat("SO3-Dict_Embed_it",int2str(ii),".mat");
-% save(fname,'A_Embed')
