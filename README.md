@@ -2,7 +2,7 @@
 This is the code base for numerical experiments for the paper "Dictionary Learning with Symmetries via Group Representations"
  
  
- Authors: Yong Sheng Soh, Subhroshekhar Ghosh, Aaron Yi Rui Low, Zhuohang Feng, Brendan K. Y. Tan.
+ Authors: Yong Sheng Soh, Subhroshekhar Ghosh, Aaron Yi Rui Low, Brendan K. Y. Tan, Zhuohang Feng.
  
 
 
