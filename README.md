@@ -1,4 +1,4 @@
-# This is the code base for numerical experiments for the paper "Dictionary Learning with Symmetries via Representation Theory
+This is the code base for numerical experiments for the paper "Dictionary Learning with Symmetries via Representation Theory
  "
  
  Authors: Yong Sheng Soh, Subhroshekhar Ghosh, Aaron Yi Rui Low, Zhuohang Feng, Brendan K. Y. Tan.
