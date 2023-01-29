@@ -1,6 +1,6 @@
-# Dictionary Learning with Symmetries Compared with Vanilla DL.
+# Dictionary Learning with Symmetries Compared with Vanilla DL
 
-The codes are based on Synthetic Data
+The codes are based on Synthetic Data.
  
  
  ## Instructions
